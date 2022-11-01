@@ -32,3 +32,6 @@ Content-Type: application/json
     "horas": 3.1
 
 }
+
+###
+DELETE {{srv}}/cursos/1

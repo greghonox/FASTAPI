@@ -55,6 +55,17 @@ def put_cursos(curso_id: int, curso: Cursos) -> dict:
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                         detail=f'Curso id {curso_id} nao foi encontrado')
 
+@app.delete('/cursos/{curso_id}')    
+def delete_cursos(curso_id: int) -> dict:
+    if curso_id in aulas:
+        curso = aulas[curso_id]
+        del aulas[curso_id]
+        return curso
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                        detail=f'Curso id {curso_id} nao foi encontrado')
+    
+
+
 if __name__ == '__main__':
     uvicorn.run("main:app", host='0.0.0.0', 
                 port=8000, log_level='info', reload=True, debug=True)
