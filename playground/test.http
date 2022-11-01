@@ -1,4 +1,10 @@
 @srv = http://localhost:8000
 
-#
+###
 GET {{srv}}
+
+###
+GET {{srv}}/cursos
+
+###
+GET {{srv}}/cursos/1
