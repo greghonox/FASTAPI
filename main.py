@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, status
+from fastapi import FastAPI, HTTPException, status, Path
 from models import Cursos
 import uvicorn
 
@@ -31,7 +31,8 @@ def get_cursos():
     return aulas
 
 @app.get('/cursos/{curso_id}')
-def get_cursos(curso_id: int) -> dict:
+def get_cursos(curso_id:int=Path(default=None, title='ID do curso', 
+                                 description='Deve ser entre 1, 10', gt=1, lt=11)) -> dict:
     try:
         return aulas[curso_id]
     except KeyError:
