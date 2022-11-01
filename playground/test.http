@@ -7,7 +7,7 @@ GET {{srv}}
 GET {{srv}}/cursos
 
 ###
-GET {{srv}}/cursos/19
+GET {{srv}}/cursos/11
 
 ###
 POST {{srv}}/cursos
@@ -34,4 +34,8 @@ Content-Type: application/json
 }
 
 ###
-DELETE {{srv}}/cursos/1
+DELETE {{srv}}/cursos/2
+
+
+###
+GET {{srv}}/calc?a=10&b=4&c=/

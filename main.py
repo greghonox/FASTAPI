@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, status, Path
+from fastapi import FastAPI, HTTPException, status, Path, Query
 from models import Cursos
 import uvicorn
 
@@ -64,7 +64,11 @@ def delete_cursos(curso_id: int) -> dict:
         return curso
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                         detail=f'Curso id {curso_id} nao foi encontrado')
-    
+
+@app.get('/calc')
+def calc(a: int=Query(gt=0), b: int=Query(gt=0, default=1),
+         c:str=Query(default='+', regex='[/|-|*]')) -> dict:
+    return {'a': a, 'b': b, 'c': eval(f'{a}{c}{b}')}
 
 
 if __name__ == '__main__':
