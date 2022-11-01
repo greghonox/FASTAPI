@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, status
 from models import Cursos
 import uvicorn
 
@@ -32,7 +32,10 @@ def get_cursos():
 
 @app.get('/cursos/{curso_id}')
 def get_cursos(curso_id: int) -> dict:
-    return aulas.get(curso_id, {1: {'titulo': 'Nao tem'}})
+    try:
+        return aulas[curso_id]
+    except KeyError:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='curso não encontrado')
 
 if __name__ == '__main__':
     uvicorn.run("main:app", host='0.0.0.0', 
