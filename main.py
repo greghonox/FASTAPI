@@ -37,6 +37,18 @@ def get_cursos(curso_id: int) -> dict:
     except KeyError:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='curso não encontrado')
 
+@app.post('/cursos')
+def post_cursos(curso: Cursos) -> dict:
+    if curso.id in aulas:
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT,
+                            detail=f'Curso já existe! {curso}')
+    next_id = len(aulas) + 1 if curso.id is None else curso.id
+    aulas[next_id] = curso
+    aulas[next_id].id = next_id
+    return aulas[next_id]
+        
+        
+
 if __name__ == '__main__':
     uvicorn.run("main:app", host='0.0.0.0', 
                 port=8000, log_level='info', reload=True, debug=True)
