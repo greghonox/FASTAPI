@@ -14,7 +14,19 @@ POST {{srv}}/cursos
 Content-Type: application/json
 
 {
-    "id": 12,
+    "id": 1,
+    "titulo": "Curso de manipulacao",
+    "aulas": 2,
+    "horas": 3.1
+
+}
+
+###
+PUT {{srv}}/cursos/10
+Content-Type: application/json
+
+{
+    "id": 1,
     "titulo": "Curso de manipulacao",
     "aulas": 2,
     "horas": 3.1

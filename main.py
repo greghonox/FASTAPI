@@ -47,7 +47,13 @@ def post_cursos(curso: Cursos) -> dict:
     aulas[next_id].id = next_id
     return aulas[next_id]
         
-        
+@app.put('/cursos/{curso_id}')
+def put_cursos(curso_id: int, curso: Cursos) -> dict:
+    if curso_id in aulas:
+        aulas[curso_id] = curso
+        return aulas[curso_id]
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                        detail=f'Curso id {curso_id} nao foi encontrado')
 
 if __name__ == '__main__':
     uvicorn.run("main:app", host='0.0.0.0', 
