@@ -39,3 +39,5 @@ DELETE {{srv}}/cursos/2
 
 ###
 GET {{srv}}/calc?a=10&b=4&c=/
+headerone: {'message': Digest user passwd}
+headertwo: {'message': Jesus will come back}

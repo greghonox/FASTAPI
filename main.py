@@ -1,5 +1,6 @@
-from fastapi import FastAPI, HTTPException, status, Path, Query
+from fastapi import FastAPI, HTTPException, status, Path, Query, Header
 from models import Cursos
+from typing import Any
 import uvicorn
 
 app = FastAPI()
@@ -67,7 +68,12 @@ def delete_cursos(curso_id: int) -> dict:
 
 @app.get('/calc')
 def calc(a: int=Query(gt=0), b: int=Query(gt=0, default=1),
-         c:str=Query(default='+', regex='[/|-|*]')) -> dict:
+         c:str=Query(default='+', regex='[/|-|*]'),
+         headerone: Any=Header(default=None), 
+         headertwo: Any=Header(default=None)) -> dict:
+    
+    print(f'headers da pagina: \nheaderone:{headerone}\nheadertwo:{headertwo}')
+    
     return {'a': a, 'b': b, 'c': eval(f'{a}{c}{b}')}
 
 
