@@ -1,7 +1,9 @@
-from fastapi import FastAPI, HTTPException, status, Path, Query, Header
+from fastapi import FastAPI, HTTPException, status, Path, Query, Header, Depends
 from models import Cursos
 from typing import Any
 import uvicorn
+
+from scripts.utils import choices
 
 app = FastAPI()
 
@@ -28,19 +30,19 @@ async def message() -> str:
     return 'message fastapi'
 
 @app.get('/cursos')
-def get_cursos():
+def get_cursos(request: Any = Depends(choices)):
     return aulas
 
 @app.get('/cursos/{curso_id}')
 def get_cursos(curso_id:int=Path(default=None, title='ID do curso', 
-                                 description='Deve ser entre 1, 10', gt=1, lt=11)) -> dict:
+              description='Deve ser entre 1, 10', gt=1, lt=11), request: Any = Depends(choices)) -> dict:
     try:
         return aulas[curso_id]
     except KeyError:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='curso não encontrado')
 
 @app.post('/cursos')
-def post_cursos(curso: Cursos) -> dict:
+def post_cursos(curso: Cursos, request: Any = Depends(choices)) -> dict:
     if curso.id in aulas:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT,
                             detail=f'Curso já existe! {curso}')
@@ -50,7 +52,7 @@ def post_cursos(curso: Cursos) -> dict:
     return aulas[next_id]
         
 @app.put('/cursos/{curso_id}')
-def put_cursos(curso_id: int, curso: Cursos) -> dict:
+def put_cursos(curso_id: int, curso: Cursos, request: Any = Depends(choices)) -> dict:
     if curso_id in aulas:
         aulas[curso_id] = curso
         return aulas[curso_id]
@@ -58,7 +60,7 @@ def put_cursos(curso_id: int, curso: Cursos) -> dict:
                         detail=f'Curso id {curso_id} nao foi encontrado')
 
 @app.delete('/cursos/{curso_id}')    
-def delete_cursos(curso_id: int) -> dict:
+def delete_cursos(curso_id: int, request: Any = Depends(choices)) -> dict:
     if curso_id in aulas:
         curso = aulas[curso_id]
         del aulas[curso_id]
