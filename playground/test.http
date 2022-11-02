@@ -7,7 +7,7 @@ GET {{srv}}
 GET {{srv}}/cursos
 
 ###
-GET {{srv}}/cursos/11
+GET {{srv}}/cursos/2
 
 ###
 POST {{srv}}/cursos
