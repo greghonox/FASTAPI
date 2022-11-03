@@ -31,10 +31,10 @@ def post_cursos(curso: Cursos) -> dict:
     if curso.id in cursos:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT,
                             detail=f'Curso já existe! {curso}')
-    next_id = len(cursos) + 1 if curso.id is None else curso.id
-    cursos[next_id] = curso
-    cursos[next_id].id = next_id
-    return cursos[next_id]
+    next_id = len(cursos) if curso.id is None else curso.id
+    cursos.append(curso)
+    cursos[len(cursos) - 1].id = next_id + 1
+    return cursos[len(cursos) - 1]
 
 
 @route.put(URL_BASE + '/{curso_id}')

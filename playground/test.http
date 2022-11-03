@@ -2,3 +2,13 @@
 
 ###
 GET {{srv}}/cursos
+
+###
+POST {{srv}}/cursos
+
+{
+    "id": 41,
+    "titulo": "Cusr",
+    "aulas": 1,
+    "horas": 4
+}
