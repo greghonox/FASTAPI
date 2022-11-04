@@ -1,7 +1,7 @@
 from typing import Optional
 from pydantic import BaseModel as Base
 
-class CursosSchema(Base):
+class CursoSchema(Base):
     id: Optional[int]
     titulo: str
     horas: int

@@ -7,8 +7,22 @@ GET {{srv}}/cursos
 POST {{srv}}/cursos
 
 {
-    "id": 41,
-    "titulo": "Curso de programação",
+    "titulo": "Curso de matematica",
     "aulas": 16,
     "horas": 47
 }
+
+###
+GET {{srv}}/cursos/2
+
+###
+PUT {{srv}}/cursos/2
+
+{
+    "titulo": "Curso de manunteção",
+    "aulas": 16,
+    "horas": 47
+}
+
+###
+DELETE {{srv}}/cursos/2
