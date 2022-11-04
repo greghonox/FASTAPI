@@ -8,7 +8,7 @@ POST {{srv}}/cursos
 
 {
     "id": 41,
-    "titulo": "Cusr",
-    "aulas": 1,
-    "horas": 4
+    "titulo": "Curso de programação",
+    "aulas": 16,
+    "horas": 47
 }
