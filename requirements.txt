@@ -3,3 +3,4 @@ uvicorn
 gunicorn # for run in prod # gunicorn main:app -w 4 -k uvicorn.workers.UvicornWorker
 sqlalchemy
 aiosqlite
+sqlmodel

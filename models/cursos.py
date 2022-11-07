@@ -1,9 +1,11 @@
-from core.configs import settings
-from sqlalchemy import Column, Integer, String
+from typing import Optional
+from sqlmodel import Field, SQLModel
 
-class CursosModel(settings.DBBAseModel):
-    __tablename__ = 'cursos'
-    id:int = Column(Integer, primary_key=True, autoincrement=True)
-    titulo: str = Column(String(100))
-    aulas: int = Column(Integer)
-    horas: int = Column(Integer)
+
+class Cursos(SQLModel, table=True):
+    __tablename__: str = 'cursos'
+    
+    id: Optional[int] = Field(default=None, primary_key=True)
+    titulo: str
+    aulas: int
+    horas: int

@@ -1,28 +1,31 @@
-@srv = http://localhost:8000
+@srv = http://localhost:8000/v1
 
 ###
 GET {{srv}}/cursos
 
+
 ###
 POST {{srv}}/cursos
+Content-Type: application/json
 
 {
-    "titulo": "Curso de matematica",
-    "aulas": 16,
-    "horas": 47
+    "titulo": "CUrso de manunteção de notebooks",
+    "horas": 45,
+    "aulas": 32
 }
 
 ###
-GET {{srv}}/cursos/2
+GET {{srv}}/cursos/3
 
 ###
-PUT {{srv}}/cursos/2
+PUT {{srv}}/cursos/3
+Content-Type: application/json
 
 {
-    "titulo": "Curso de manunteção",
-    "aulas": 16,
-    "horas": 47
+    "titulo": "CUrso de manunteção de manicure",
+    "horas": 45,
+    "aulas": 32
 }
 
 ###
-DELETE {{srv}}/cursos/2
+DELETE {{srv}}/cursos/3

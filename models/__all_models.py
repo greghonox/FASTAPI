@@ -1,1 +1,2 @@
-from models.cursos import CursosModel
+from models.cusos import Cursos
+
