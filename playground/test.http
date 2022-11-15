@@ -1,31 +1,70 @@
 @srv = http://localhost:8000/v1
 
 ###
-GET {{srv}}/cursos
-
-
-###
-POST {{srv}}/cursos
+POST {{srv}}/usuarios/signup
 Content-Type: application/json
 
 {
-    "titulo": "CUrso de manunteção de notebooks",
-    "horas": 45,
-    "aulas": 32
+    "nome": "Germano",
+    "sobrenome": "Honorato",
+    "email": "germano@gmail.com",
+    "senha": "123",
+    "admin": true
 }
 
 ###
-GET {{srv}}/cursos/3
+GET {{srv}}/usuarios
 
 ###
-PUT {{srv}}/cursos/3
+GET {{srv}}/usuarios/3
+
+###
+PUT {{srv}}/usuarios/5
 Content-Type: application/json
 
 {
-    "titulo": "CUrso de manunteção de manicure",
-    "horas": 45,
-    "aulas": 32
+    "nome": "Germano",
+    "sobrenome": "Honorato",
+    "senha": "123",
+    "admin": false
 }
 
 ###
-DELETE {{srv}}/cursos/3
+DELETE {{srv}}/usuarios/2
+
+###
+POST {{srv}}/usuarios/login
+Content-Type: application/x-www-form-urlencoded
+
+username=germano@gmail.com
+&password=123
+
+###
+POST {{srv}}/artigos
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoidG9rZW5fYWNlc3NvIiwiZXhwIjoyNTM5MzgxOTg2LCJpYXQiOjE2Njg0Njk5ODYsInN1YiI6IjEifQ.3u0Tr3NMUHS47b2UaFv4P7W38-q3pr0NGFmtX_4jVkE
+
+{
+    "url": "https://aseila.com.br",
+    "titulo": "Qualquer coisa",
+    "descricao": "Ola vamos treinar"
+}
+
+###
+GET {{srv}}/artigos
+
+###
+PUT {{srv}}/artigos/10
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoidG9rZW5fYWNlc3NvIiwiZXhwIjoyNTM5MzgyNTU0LCJpYXQiOjE2Njg0NzA1NTQsInN1YiI6IjIifQ.rmE8NBX9ddNejq-WjE00cqRZXxNqb-RS7ypTUELRxUE
+
+{
+    "url": "https://asddddddd.com.br",
+    "titulo": "Qualquer coisa",
+    "descricao": "Ola vamos treinar"
+}
+
+
+###
+DELETE {{srv}}/artigos/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoidG9rZW5fYWNlc3NvIiwiZXhwIjoyNTM5MzgyNTU0LCJpYXQiOjE2Njg0NzA1NTQsInN1YiI6IjIifQ.rmE8NBX9ddNejq-WjE00cqRZXxNqb-RS7ypTUELRxUE

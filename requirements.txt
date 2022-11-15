@@ -4,3 +4,8 @@ gunicorn # for run in prod # gunicorn main:app -w 4 -k uvicorn.workers.UvicornWo
 sqlalchemy
 aiosqlite
 sqlmodel
+passlib
+pytz
+python-jose[cryptography]
+email_validator
+python-multipart

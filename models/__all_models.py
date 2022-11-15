@@ -1,2 +1,3 @@
-from models.cusos import Cursos
+from models.artigos import Artigos
+from models.usuarios import Usuarios
 
